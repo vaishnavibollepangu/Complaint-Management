@@ -1,0 +1,34 @@
+{% load static %}
+{% include 'customer_header.html' %}
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url('{% static 'images/bg_2.jpg' %}');" data-stellar-background-ratio="0.5">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row no-gutters slider-text align-items-center justify-content-center">
+			<div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-0 bread">View Reply</h1>
+			</div>
+        </div>
+	</div>
+ </section>
+<br>
+<table align="center" border="2" cellpadding="10" cellspacing="0" width="80%">
+	<thead>
+	<tr>
+		<th>Id</th>
+		<th>MESSAGE</th>
+
+	</tr>
+    </thead>
+	<tbody>
+	{% for replay in replay  %}
+	<tr>
+		<td>{{replay.id}}</td>
+		<td>{{replay.message}}</td>
+
+	</tr>
+	{% endfor %}
+	</tbody>
+</table><br>
+{% include 'footer.html' %}
+

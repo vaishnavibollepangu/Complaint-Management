@@ -1,0 +1,69 @@
+{% load static %}
+{% include 'admin_header.html' %}
+<section class="hero-wrap hero-wrap-2" style="background-image: url('{% static 'images/bg_2.jpg' %}');" data-stellar-background-ratio="0.5">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row no-gutters slider-text align-items-center justify-content-center">
+			<div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-0 bread">Admin_ViewCatagory</h1>
+			</div>
+        </div>
+	</div>
+    </section>
+<br>
+<table align="center" border="1" cellpadding="20" cellspacing="0" width="80%">
+
+<thead>
+     <tr>
+         <th>ID</th>
+         <th>TITLE</th>
+         <th>DESCREPTION</th>
+         <th>CATAGORY</th>
+         <th>PRIORITY</th>
+         <th>STATUS</th>
+
+     </tr>
+</thead>
+    <tbody>
+    {% for addcatagory in addcatagory %}
+       <tr>
+           <td>{{addcatagory.id}}</td>
+           <td>{{addcatagory.title}}</td>
+           <td>{{addcatagory.descreption}}</td>
+           <td>{{addcatagory.catagory}}</td>
+           <td>{{addcatagory.priority}}</td>
+<!--           <td>-->
+<!--                                 {% if addcatagory.status == 1 %}-->
+<!--                                    <span class="green">Accepted</span>-->
+<!--                                {% elif addcatagory.status == 2 %}-->
+<!--                                    <span class="red">Rejected</span>-->
+<!--                                {% elif addcatagory.status == 3 %}-->
+<!--                                    <span class="black">cancel</span>-->
+<!--                                {% else %}-->
+<!--                                    <span class="black">apply</span>-->
+
+<!--                                {% endif %}-->
+<!--            </td>-->
+            <td>
+			                    {% if addcatagory.status == 0 %}
+                                <a href="{% url 'accept_addcatagory' id=addcatagory.id %}" class="btn btn-success" >Accept</a>
+                                <a class="btn btn-danger" href="{% url 'reject_addcatagory' id=addcatagory.id %}" >Reject</a>
+                                {% elif addcatagory.status == 1  %}
+                                 <button class="btn btn-warning" disabled="disabled" data-toggle="modal" data-target="#reply_modal">Accepted</button>
+                                {% elif addcatagory.status == 2 %}
+                                <button class="btn btn-danger" disabled="disabled" data-toggle="modal" data-target="#reply_modal">Rejected</button>
+                                {% else %}
+                                <button class="btn btn-danger" disabled="disabled" data-toggle="modal" data-target="#reply_modal">canceled</button>
+                                {% endif %}
+                            </td>
+
+
+           <td><a href="/update_status/{{addcatagory.id}}" class="btn-link">Update_Status</a></td>
+
+       </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+{% include 'footer.html' %}
+</html>

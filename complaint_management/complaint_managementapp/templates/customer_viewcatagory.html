@@ -1,0 +1,62 @@
+{% load static %}
+{% include 'customer_header.html' %}
+<section class="hero-wrap hero-wrap-2" style="background-image: url('{% static 'images/bg_2.jpg' %}');" data-stellar-background-ratio="0.5">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row no-gutters slider-text align-items-center justify-content-center">
+			<div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-0 bread">My Category</h1>
+			</div>
+        </div>
+	</div>
+    </section>
+<br>
+<table align="center" border="1" cellpadding="20" cellspacing="0" width="80%">
+
+<thead>
+     <tr>
+         <th>id</th>
+         <th>TITLE</th>
+         <th>DESCREPTION</th>
+         <th>CATAGORY</th>
+         <th>PRIORITY</th>
+         <th>STATUS</th>
+
+
+     </tr>
+</thead>
+    <tbody>
+    {% for addcatagory in addcatagory %}
+       <tr>
+           <td>{{addcatagory.id}}</td>
+           <td>{{addcatagory.title}}</td>
+           <td>{{addcatagory.descreption}}</td>
+           <td>{{addcatagory.catagory}}</td>
+           <td>{{addcatagory.priority}}</td>
+
+           <td>
+                                {% if addcatagory.status == 1 %}
+                                    <span class="green">Accepted</span>
+                                {% elif addcatagory.status == 2 %}
+                                    <span class="red">Rejected</span>
+                                {% elif addcatagory.status == 3 %}
+                                    <span class="black">cancel</span>
+                                {% else %}
+                                    <span class="black">New</span>
+
+                                {% endif %}
+        </td>
+
+           <td><a href="/view_update_status/{{update_status.id}}"class="btn-link">View_Update_Status</a></td>
+
+           <td><a href="/addcatagory_edit/{{addcatagory.id}}"class="btn-link">Edit</a></td>
+           <td><a href="/addcatagory_delete/{{addcatagory.id}}"class="btn-link">Delete</a></td>
+
+       </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<br>
+<br>
+
+{% include 'footer.html' %}

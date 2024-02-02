@@ -1,0 +1,37 @@
+{% load static %}
+{% include 'admin_header.html' %}
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url('{% static 'images/bg_2.jpg' %}');" data-stellar-background-ratio="0.5">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row no-gutters slider-text align-items-center justify-content-center">
+			<div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-0 bread">Admin_View_Query</h1>
+			</div>
+        </div>
+	</div>
+ </section>
+<br>
+<table align="center" border="2" cellpadding="10" cellspacing="0" width="80%">
+	<thead>
+	<tr>
+		<th>Id</th>
+		<th>EMAIL</th>
+		<th>TITLE</th>
+		<th>DESCREPTION</th>
+	</tr>
+    </thead>
+	<tbody>
+	{% for send_query in send_query  %}
+	<tr>
+		<td>{{send_query.id}}</td>
+		<td>{{send_query.solvers}}</td>
+		<td>{{send_query.title}}</td>
+		<td>{{send_query.descreption}}</td>
+
+	</tr>
+	{% endfor %}
+	</tbody>
+</table><br>
+{% include 'footer.html' %}
+

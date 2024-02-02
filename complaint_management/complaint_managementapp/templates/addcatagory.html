@@ -1,0 +1,40 @@
+{% load static %}
+{% include 'customer_header.html' %}
+<section class="hero-wrap hero-wrap-2" style="background-image: url('{% static 'images/bg_2.jpg' %}');" data-stellar-background-ratio="0.5">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row no-gutters slider-text align-items-center justify-content-center">
+			<div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-0 bread">Customer Addcatagory</h1>
+			</div>
+        </div>
+	</div>
+ </section>
+
+</head>
+<body>
+<form  align="center" method ="POST" class="post-form" action="{% url 'addcatagory' %}" >
+{% csrf_token %}
+    <h1 class="fs-4 card-title fw-bold mb-4">Add Catagory</h1>
+    <form method="POST" class="needs-validation" novalidate="" autocomplete="off">
+        <div class="mb-2 w-100">
+            <label class="mb-2 text-muted" for="title">Title</label>
+            <input id="title" type="text"  name="title"  required autofocus>
+        </div>
+        <div class="mb-2 w-100">
+            <label class="text-muted" for="descreption">Descreption</label>
+            <input id="descreption" type="text"  name="descreption" required>
+        </div>
+        <div class="mb-2 w-100">
+            <label class="text-muted" for="catagory">Catagory</label>
+            <input id="catagory" type="text"  name="catagory" required>
+        </div>
+        <div class="mb-2 w-100">
+            <label class="text-muted" for="priority">Priority</label>
+            <input id="priority" type="text"  name="priority" required>
+        </div>
+        <button type="Submit" class="btn btn-primary">Submit</button>
+    </form>
+</form>
+{% include 'footer.html' %}
+
